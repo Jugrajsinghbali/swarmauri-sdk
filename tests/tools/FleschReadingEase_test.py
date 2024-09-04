@@ -1,5 +1,5 @@
 import pytest
-from swarmauri.standard.tools.concrete.CodeInterpreterTool import CodeInterpreterTool as Tool
+from swarmauri.standard.tools.concrete.FleschReadingEaseTool import FleschReadingEaseTool as Tool
 
 @pytest.mark.unit
 def test_ubc_resource():
@@ -8,16 +8,16 @@ def test_ubc_resource():
 
 @pytest.mark.unit
 def test_ubc_type():
-    assert Tool().type == 'CodeInterpreterTool'
+    assert Tool().type == 'FleschReadingEaseTool'
 
 @pytest.mark.unit
 def test_initialization():
     tool = Tool()
-    assert type(tool.swm_path) == str
     assert type(tool.id) == str
 
 @pytest.mark.unit
 def test_call():
-    python_code = "print('hello world')"
     tool = Tool()
-    assert tool(python_code) == 'hello world\n'
+    text = "The cat sat on the mat."
+    expected_score = 116.145
+    assert  tool(text) == pytest.approx(expected_score, rel=1e-2)
