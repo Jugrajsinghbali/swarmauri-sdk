@@ -15,11 +15,17 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
+
+    
+
+    # Optional: Install specific dependencies if needed
+    # - name: Install dependencies
+    #   run: |
+    #     pip install pytest  # Example if you need to install pytest or any other library
 
     - name: Run tests
       run: |
+        pytest tests/tools/SentimentAnalysisTool_test.py
+        pytest tests/tools/ZapierHookTool_test.py
         pytest tests/tools/EntityRecognitionTool_test.py
+Explanation of the Workflow
